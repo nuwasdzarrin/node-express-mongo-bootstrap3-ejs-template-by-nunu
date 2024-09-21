@@ -1,0 +1,23 @@
+<style type='text/css'>
+    .wrapper-auth {
+        width: 350px;
+        height: 300px;
+        margin: 0 auto;
+    }
+</style>
+<div class="wrapper-auth">
+    <h3 class="m-b-5">Login Alpha Bot</h3>
+    <hr/>
+    <form method="post" action="/login/process">
+        <input type="hidden" name="verifica" value="verifica">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="username" maxlength="50" class="form-control"  size="20px" placeholder="admin"/>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password"  name="password" maxlength="50" class="form-control" placeholder="123456">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
