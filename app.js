@@ -1,17 +1,17 @@
 require('dotenv').config();
-var express = require('express');
-var session = require('express-session');
-var passport = require('passport');
-var http = require('http');
-var path = require('path');
+const express = require('express');
+const session = require('express-session');
+const passport = require('passport');
+const http = require('http');
+const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 
-var morgan = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
-var mongoose = require('mongoose');
+const morgan = require('morgan');
+// const cookieParser = require('cookie-parser');
+// const bodyParser   = require('body-parser');
+const mongoose = require('mongoose');
 
-var app = express();
+const app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -48,7 +48,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-require('./app/config/passport')(passport);
+require('./app/configs/passport')(passport);
 require('./app/routes/route')(app, passport);
 
 http.createServer(app).listen(app.get('port'), function(){
@@ -57,10 +57,10 @@ http.createServer(app).listen(app.get('port'), function(){
 
 
 //Insert first user
-var User = require('./app/models/user');
+let User = require('./app/models/user');
 User.findOne({username : "admin"}, function (err, user) {
 	if (!user) {
-		var newUser = new User();
+		let newUser = new User();
 		newUser.name = "nome";
 		newUser.username = "admin";
 		newUser.password = newUser.generateHash("123456");
@@ -68,7 +68,7 @@ User.findOne({username : "admin"}, function (err, user) {
 			if (err) {
 				console.log(err)
 			} else {
-				console.log("sucesso")
+				console.log("Success create first user")
 			}
 		});
 	}
